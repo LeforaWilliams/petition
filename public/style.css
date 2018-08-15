@@ -1,0 +1,17 @@
+body {
+    height: 100vh;
+}
+
+.content-wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+canvas {
+    border: 1px dashed black;
+}
+
+#sig-input-field {
+    visibility: hidden;
+}
