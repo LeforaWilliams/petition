@@ -6,6 +6,13 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
+}
+
+.petition-intro {
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
 }
 
 canvas {
@@ -14,4 +21,8 @@ canvas {
 
 #sig-input-field {
     visibility: hidden;
+}
+
+#error-insert {
+    color: firebrick;
 }

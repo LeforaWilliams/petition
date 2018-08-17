@@ -1,0 +1,19 @@
+<!Doctype html>
+<h1>Here you can register to sign the petition.</h1>
+<p>If you already have an account, you can <a href="7login">log in here</a> </p>
+<form class="registration-form" action="/registration" method="post">
+    <input type="text" name="name" value="" placeholder="
+    First Name">
+
+    <input type="text" name="surname" value="" placeholder="
+    last Name">
+
+    <input type="text" name="email" value="" placeholder="
+    Your email-address">
+
+    <input type="text" name="pssword" value="" placeholder="
+    your password">
+    <button name="button">Register</button>
+</form>
+
+    {{>error}}
