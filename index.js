@@ -2,8 +2,15 @@
 const express = require("express");
 const app = express();
 const hb = require("express-handlebars");
-const { insertSig, queryDb, getSigniture } = require("./dbRequests.js");
+const {
+    insertSig,
+    queryDb,
+    getSigniture,
+    registerUser
+} = require("./dbRequests.js");
+
 const cookieSession = require("cookie-session");
+const { hashPass, checkPass } = require("./encryption.js");
 
 // const csurf = require("csurf");
 // app.use((req, res, next) => {
@@ -27,8 +34,6 @@ app.use(
 );
 
 function sigIdCheck(req, res, next) {
-    console.log("inside checkForSigId", req.session);
-
     if (!req.session.submission) {
         res.redirect("/");
     } else {
@@ -46,15 +51,57 @@ app.get("/", function(req, res) {
     res.redirect("/home");
 });
 app.get("/registration", function(req, res) {
+    res.render("registration", {
+        layout: "main"
+    });
+
     //form for information
-    //create new table for users, first,last,email UNIQUE, password restriction
+    //You need to be able to map signatures to users and users to signatures.
 });
 app.post("/registration", function(req, res) {
-    //enter data to DATABASE
-    //user should be logged in upon registration
-    //email and name goes into database,
-    //password is hashed and salted and save hash and salt togehter in the database
-    //save userid in request.session, maybe even first and last name
+    if (
+        !req.body.name ||
+        !req.body.surname ||
+        !req.body.email ||
+        !req.body.password
+    ) {
+        console.log("RERENDERED ERROR IN REGI ROUTE");
+        res.render("registration", {
+            layout: "main",
+            error: true
+        });
+    } else {
+        hashPass(req.body.password)
+            .then(function(hashedPass) {
+                return registerUser(
+                    req.body.name,
+                    req.body.surname,
+                    req.body.email,
+                    hashedPass
+                );
+            })
+            .then(function(userId) {
+                req.session.userID = userId.rows[0].id;
+
+                res.redirect("/home");
+            })
+            .catch(function(err) {
+                console.log("ERROR FROM REGI POST ", err);
+                res.render("registration", {
+                    layout: "main",
+                    error: true
+                });
+            });
+    }
+});
+//enter data to DATABASE
+//user should be logged in upon registration
+//email and name goes into database,
+//password is hashed and salted and save hash and salt togehter in the database
+//save userid in request.session, maybe even first and last name
+app.get("/logout", function(req, res) {
+    req.session = null;
+    res.redirect("/registration");
 });
 
 app.get("/login", function(req, res) {
@@ -77,14 +124,18 @@ app.get("/home", function(req, res) {
 });
 
 app.post("/home", function(req, res) {
-    console.log(req.body.name, req.body.surname);
     if (!req.body.name || !req.body.surname || !req.body.sig) {
         res.render("petitionHome", {
             layout: "main",
             error: true
         });
     } else {
-        insertSig(req.body.name, req.body.surname, req.body.sig)
+        insertSig(
+            req.body.name,
+            req.body.surname,
+            req.body.sig,
+            req.session.userID
+        )
             .then(function(value) {
                 req.session.submission = value.rows[0].id; //acces the rows here and don't set it to a random value
                 res.redirect("/thanks");
@@ -101,14 +152,20 @@ app.post("/home", function(req, res) {
 
 app.get("/thanks", sigIdCheck, function(req, res) {
     // getSigniture(req.session.submission);
-    getSigniture(req.session.submission).then(function([id, count]) {
-        console.log(id, count);
-        res.render("thanks", {
-            layout: "main",
-            signiture: id.rows[0].signiture,
-            singnersCount: count.rows[0].count
+    getSigniture(req.session.submission)
+        .then(function([id, count]) {
+            res.render("thanks", {
+                layout: "main",
+                signiture: id.rows[0].signiture,
+                singnersCount: count.rows[0].count
+            });
+        })
+        .catch(function(err) {
+            console.log(err);
+            res.render("thanks", {
+                layout: "main"
+            });
         });
-    });
 });
 
 app.get("/signers", function(req, res) {
