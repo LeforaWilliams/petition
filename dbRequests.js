@@ -121,6 +121,10 @@ module.exports.getUserProfileInfo = function(user_id) {
     );
 };
 
+module.exports.deleteSig = function(user_id) {
+    return db.query(`DELETE FROM signedPetition WHERE user_id =$1 `, [user_id]);
+};
+
 //UNSIGN FROM THE PETITION
 //post request that runs a delete queryDb
 //need to also delete the sig ID from the session OBJECT

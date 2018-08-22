@@ -13,7 +13,8 @@ const {
     updateUsersTable,
     updateUsersTableNoPs,
     updateInsertUserProfiles,
-    getUserProfileInfo
+    getUserProfileInfo,
+    deleteSig
 } = require("./dbRequests.js");
 
 const cookieSession = require("cookie-session");
@@ -178,14 +179,16 @@ app.post("/profile", loginIdCheck, function(req, res) {
 });
 /**********User Profile Page End***********/
 app.get("/profile/edit", loginIdCheck, function(req, res) {
-    getUserProfileInfo(req.session.userID).then(function(userInfo) {
-        res.render("profileEdit", {
-            layout: "main",
-            data: userInfo.rows[0]
+    getUserProfileInfo(req.session.userID)
+        .then(function(userInfo) {
+            res.render("profileEdit", {
+                layout: "main",
+                data: userInfo.rows[0]
+            });
+        })
+        .catch(function(err) {
+            console.log("ERROR FROM THE PROFILE EDIT GET ROUTE", err);
         });
-    });
-}).catch(function(err) {
-    console.log("ERROR FROM THE PROFILE EDIT GET ROUTE", err);
 });
 
 //*************EDIT PROFILE*****************
@@ -287,6 +290,16 @@ app.get("/thanks", loginIdCheck, sigIdCheck, function(req, res) {
                 layout: "main"
             });
         });
+});
+
+app.post("/delete-signature", function(req, res) {
+    deleteSig(req.session.userID).then(res.redirect("/delete-signature"));
+});
+
+app.get("/delete-signature", function(req, res) {
+    res.render("deleteSig", {
+        layout: "main"
+    });
 });
 /**********Thank you page end***********/
 
