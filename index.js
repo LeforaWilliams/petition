@@ -4,7 +4,7 @@ const app = express();
 const hb = require("express-handlebars");
 const {
     insertSig,
-    queryDb,
+    queryDbForSigners,
     getSigniture,
     registerUser,
     loginUser,
@@ -293,7 +293,10 @@ app.get("/thanks", loginIdCheck, sigIdCheck, function(req, res) {
 });
 
 app.post("/delete-signature", function(req, res) {
-    deleteSig(req.session.userID).then(res.redirect("/delete-signature"));
+    deleteSig(req.session.userID).then(function() {
+        res.session.userID = null;
+        res.redirect("/delete-signature");
+    });
 });
 
 app.get("/delete-signature", function(req, res) {
@@ -305,8 +308,9 @@ app.get("/delete-signature", function(req, res) {
 
 /**********Signers Page***********/
 app.get("/signers", function(req, res) {
-    queryDb()
+    queryDbForSigners()
         .then(function(names) {
+            console.log(names.rows);
             res.render("signers", {
                 layout: "main",
                 signers: names.rows,
@@ -314,12 +318,12 @@ app.get("/signers", function(req, res) {
             });
         })
         .catch(function(err) {
-            console.log("ERROR IN SIGNERS ROUTE ", err);
+            console.log("ERROR IN SIGNERS GET ROUTE ", err);
         });
 });
 
 app.get("/signers/:city", function(req, res) {
-    let city = req.params.city;
+    let city = req.params.city.toLowerCase();
     cityQuery(city)
         .then(function(names) {
             res.render("signers", {

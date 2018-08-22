@@ -9,18 +9,17 @@ module.exports.insertSig = function insertSig(signiture, userId) {
     );
 };
 
-module.exports.queryDb = function queryDb() {
+module.exports.queryDbForSigners = function() {
     return db.query(
-        `SELECT users.name, users.surname, user_profiles.url, user_profiles.age,user_profiles.city
+        `SELECT users.name, users.surname, user_profiles.url, user_profiles.age,user_profiles.city, signedPetition.user_id
         FROM users
         LEFT JOIN user_profiles
-        ON users.id = user_profiles.user_id`
+        ON users.id = user_profiles.user_id
+        LEFT JOIN signedPetition
+        ON user_profiles.user_id = signedPetition.user_id `
     );
 };
 
-// module.exports.getSigniture = function getSigniture() {
-//     return db.query("SELECT id,signiture FROM signedPetition");
-// };
 module.exports.getSigniture = function(sigId) {
     return Promise.all([
         db.query("SELECT signiture FROM signedPetition WHERE id =$1", [sigId]),
