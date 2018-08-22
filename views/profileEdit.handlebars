@@ -1,0 +1,18 @@
+<!doctype html>
+<div class="profile-edit-wrap">
+    <form class="profile-edit" action="/profile/edit" method="post">
+        <input type="text" name="name" value="{{data.name}}" placeholder="Name">
+        <input type="text" name="surname" value="{{data.surname}}" placeholder="Surname">
+        <input type="text" name="email" value="{{data.email}}">
+        <input type="text" name="age" value="{{data.age}}">
+        <p>Age</p>
+        <input type="text" name="city" value="{{data.city}}">
+        <p>City</p>
+        <input type="text" name="url" value="{{data.url}}">
+        <p>Homepage</p>
+        <input type="hidden" name="_csrf" value="{{csrfToken}}">
+        <button name="updateButton">Update</button>
+
+     </form>
+
+</div>

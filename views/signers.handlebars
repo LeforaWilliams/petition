@@ -1,7 +1,30 @@
 <!DOCTYPE html>
 <h1>Here you can see the names of other people that have signed the petiton</h1>
-{{#each signers}}
-    {{name}}
-    {{surname}}
 
-{{/each}}
+
+{{#if signersSameCity}}
+
+    {{#each signers}}
+        <p>
+            {{name}} {{surname}}, {{age}}
+
+        </p>
+    {{/each}}
+
+
+{{else}}
+    <ul>
+        {{#each signers}}
+            <li>
+                <a href="{{url}}">{{name}} {{surname}},</a>
+                {{age}},
+                {{#if city }}
+                    <a href="/signers/{{city}}">{{city}}</a>
+                {{/if}}
+            </li>
+        {{/each}}
+
+    </ul>
+    {{/if}}
+
+​

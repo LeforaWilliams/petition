@@ -1,12 +1,33 @@
 body {
-    height: 100vh;
-}
-
-.content-wrap {
+    background: #ffdb8a;
+    color: #170f36;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    text-align: center;
+}
+
+/* Petition Signing Page */
+
+.petition-home-wrap {
+    height: 100vh;
+    width: 100vw;
+}
+
+.petition-home-wrap h1 {
+    font-size: 5rem;
+    text-align: center;
+    display: inline;
+}
+input {
+    display: block;
+}
+.home-headline {
+    text-transform: uppercase;
+}
+
+.content-wrap {
 }
 
 .petition-intro {
@@ -23,6 +44,32 @@ canvas {
     visibility: hidden;
 }
 
+/* Thank You Page */
+.thank-you-wrap h1 {
+    font-size: 6em;
+}
+
+.thank-you-wrap p {
+    font-size: 2rem;
+    margin: 8% 0;
+}
+
+.thank-you-wrap a {
+    text-decoration: none;
+    font-size: 1.8rem;
+    color: salmon;
+}
+
+.thank-you-wrap a:hover {
+    font-size: 1.9rem;
+    color: #170f36;
+}
+
+.thank-you-wrap img {
+    display: inline-block;
+}
+
+/* Error Message */
 #error-insert {
     color: firebrick;
 }
