@@ -179,12 +179,13 @@ app.post("/profile", loginIdCheck, function(req, res) {
 /**********User Profile Page End***********/
 app.get("/profile/edit", loginIdCheck, function(req, res) {
     getUserProfileInfo(req.session.userID).then(function(userInfo) {
-        console.log("USER INFO FROM GETPROINF", userInfo);
         res.render("profileEdit", {
             layout: "main",
             data: userInfo.rows[0]
         });
     });
+}).catch(function(err) {
+    console.log("ERROR FROM THE PROFILE EDIT GET ROUTE", err);
 });
 
 //*************EDIT PROFILE*****************
@@ -197,20 +198,19 @@ app.post("/profile/edit", loginIdCheck, function(req, res) {
             req.body.email,
             req.session.userID
         );
-    } //else {
-    //     hashPass(req.body.password).then(function(hashedPass) {
-    //         console.log("B");
-    //         return updateUsersTable(
-    //             req.body.name,
-    //             req.body.surname,
-    //             req.body.email,
-    //             hashedPass,
-    //             req.session.userID
-    //         );
-    //     });
-    // }
+    } else {
+        hashPass(req.body.password).then(function(hashedPass) {
+            console.log("B");
+            return updateUsersTable(
+                req.body.name,
+                req.body.surname,
+                req.body.email,
+                hashedPass,
+                req.session.userID
+            );
+        });
+    }
     console.log("C");
-    console.log("LOG FROM USER PROFILE UPDATE ", req.body);
     updateInsertUserProfiles(
         req.body.age,
         req.body.city,
