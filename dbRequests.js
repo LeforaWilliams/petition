@@ -1,6 +1,16 @@
 const spicedPg = require("spiced-pg");
-const { password } = require("./secrets.json");
-const db = spicedPg(`postgres:postgres:${password}@localhost:5432/petition`);
+// const { password } = require("./secrets.json");
+let dbUrl;
+if (process.env.DATABASE_URL) {
+    dbUrl = process.env.DATABASE_URL;
+} else {
+    const secret = require("./secrets.json");
+    dbUrl = `postgres:postgres:${secret.password}@localhost:5432/petition`;
+}
+
+const db = spicedPg(dbUrl);
+// const db =
+//     spicedPg(`postgres:postgres:${password}@localhost:5432/petition`);
 
 module.exports.insertSig = function insertSig(signiture, userId) {
     return db.query(

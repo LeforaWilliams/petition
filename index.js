@@ -345,4 +345,4 @@ app.get("/signers/:city", function(req, res) {
 });
 /**********Signers Page End***********/
 
-app.listen(/*process.env.PORT ||*/ 8080, () => console.log("listening :D"));
+app.listen(process.env.PORT || 8080, () => console.log("listening :D"));
