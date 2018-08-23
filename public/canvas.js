@@ -24,8 +24,9 @@ canvas.addEventListener("mousemove", function(e) {
     }
 });
 
-document.addEventListener("mouseup", function(e) {
+canvas.addEventListener("mouseup", function(e) {
     draw = false;
+    console.log("CANVAS EVENT MOUSEUP");
     drawData = canvas.toDataURL();
     canvasInput.value = drawData;
     //send canvas data to sig input field
