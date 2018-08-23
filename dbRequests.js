@@ -4,7 +4,7 @@ const db = spicedPg(`postgres:postgres:${password}@localhost:5432/petition`);
 
 module.exports.insertSig = function insertSig(signiture, userId) {
     return db.query(
-        "INSERT INTO signedPetition (signiture,user_id) VALUES($1,$2) RETURNING id",
+        "INSERT INTO signedPetition (signiture, user_id) VALUES($1,$2) RETURNING id",
         [signiture, userId]
     );
 };
@@ -118,8 +118,10 @@ module.exports.updateInsertUserProfiles = function(age, city, url, user_id) {
 
 module.exports.getUserProfileInfo = function(user_id) {
     return db.query(
-        `SELECT user_profiles.age, user_profiles.city, user_profiles.url, users.name, users.surname,users.email FROM user_profiles
-        LEFT JOIN users ON users.id = user_profiles.user_id
+        `SELECT user_profiles.age, user_profiles.city, user_profiles.url, users.name, users.surname,users.email
+        FROM users
+        LEFT JOIN user_profiles
+        ON users.id = user_profiles.user_id
         WHERE users.id = $1`,
         [user_id]
     );

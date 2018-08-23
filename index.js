@@ -181,9 +181,13 @@ app.post("/profile", loginIdCheck, function(req, res) {
         });
 });
 /**********User Profile Page End***********/
+
+//*************EDIT PROFILE*****************
 app.get("/profile/edit", loginIdCheck, function(req, res) {
+    console.log("USER ID PROFILE EDIT", req.session.userID);
     getUserProfileInfo(req.session.userID)
         .then(function(userInfo) {
+            console.log("USERINFO FROM PROFILE EDIT", userInfo);
             res.render("profileEdit", {
                 layout: "main",
                 data: userInfo.rows[0]
@@ -194,7 +198,6 @@ app.get("/profile/edit", loginIdCheck, function(req, res) {
         });
 });
 
-//*************EDIT PROFILE*****************
 app.post("/profile/edit", loginIdCheck, function(req, res) {
     if (req.body.password == "") {
         console.log("A");
@@ -225,7 +228,10 @@ app.post("/profile/edit", loginIdCheck, function(req, res) {
     )
         .then(res.redirect("/profile"))
         .catch(function(err) {
-            console.log("THIS ERROR COMES FROM THE PROFILE EDIT ", err);
+            console.log(
+                "THIS ERROR COMES FROM THE PROFILE EDIT POST ROUTE",
+                err
+            );
         });
 });
 
@@ -294,7 +300,7 @@ app.get("/thanks", loginIdCheck, sigIdCheck, function(req, res) {
 
 app.post("/delete-signature", function(req, res) {
     deleteSig(req.session.userID).then(function() {
-        req.session.submission = null;
+        delete req.session.submission;
         res.redirect("/delete-signature");
     });
 });
