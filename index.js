@@ -41,6 +41,9 @@ app.use((req, res, next) => {
     res.locals.csrfToken = req.csrfToken();
     next();
 });
+
+app.use(express.static("public"));
+
 /**********Signiture ID Middleware***********/
 function sigIdCheck(req, res, next) {
     if (!req.session.submission) {
@@ -57,7 +60,6 @@ function loginIdCheck(req, res, next) {
         next();
     }
 }
-app.use(express.static("./public"));
 
 //redirecting when going to localhost
 app.get("/", function(req, res) {
@@ -96,7 +98,7 @@ app.post("/registration", function(req, res) {
                 req.session.firstName = req.body.name;
                 req.session.lastName = req.body.surname;
                 req.session.email = req.body.email;
-                req.session.loggedIn = "User Logged in";
+                req.session.loggedIn = userId.rows[0].id;
 
                 res.redirect("/profile");
             })
@@ -137,6 +139,7 @@ app.post("/login", function(req, res) {
                 .then(function(checkPassRes) {
                     if (checkPassRes) {
                         req.session.userID = userInfo.rows[0].id;
+                        req.session.loggedIn = userInfo.rows[0].id;
                         if (req.session.submission) {
                             res.redirect("/thanks");
                         } else {
@@ -229,22 +232,19 @@ app.post("/profile/edit", loginIdCheck, function(req, res) {
 //************EDIT PROFILE END**************
 
 /**********Petition Hompage***********/
-app.get(
-    "/home",
-    /*loginIdCheck,*/ function(req, res) {
-        let fN = req.session.firstName;
-        let lN = req.session.lastName;
-        if (!req.session.submission) {
-            res.render("petitionHome", {
-                layout: "main",
-                fN,
-                lN
-            });
-        } else {
-            res.redirect("/thanks");
-        }
+app.get("/home", loginIdCheck, function(req, res) {
+    let fN = req.session.firstName;
+    let lN = req.session.lastName;
+    if (!req.session.submission) {
+        res.render("petitionHome", {
+            layout: "main",
+            fN,
+            lN
+        });
+    } else {
+        res.redirect("/thanks");
     }
-);
+});
 
 app.post("/home", function(req, res) {
     let fN = req.session.firstName;
@@ -259,7 +259,7 @@ app.post("/home", function(req, res) {
     } else {
         insertSig(req.body.sig, req.session.userID)
             .then(function(value) {
-                req.session.submission = value.rows[0].id; //acces the rows here and don't set it to a random value
+                req.session.submission = value.rows[0].id;
                 res.redirect("/thanks");
             })
             .catch(function(err) {
@@ -285,7 +285,7 @@ app.get("/thanks", loginIdCheck, sigIdCheck, function(req, res) {
             });
         })
         .catch(function(err) {
-            console.log(err);
+            console.log("ERROR IN THANKS CATCH", err);
             res.render("thanks", {
                 layout: "main"
             });
@@ -294,7 +294,7 @@ app.get("/thanks", loginIdCheck, sigIdCheck, function(req, res) {
 
 app.post("/delete-signature", function(req, res) {
     deleteSig(req.session.userID).then(function() {
-        res.session.userID = null;
+        req.session.submission = null;
         res.redirect("/delete-signature");
     });
 });
@@ -310,7 +310,7 @@ app.get("/delete-signature", function(req, res) {
 app.get("/signers", function(req, res) {
     queryDbForSigners()
         .then(function(names) {
-            console.log(names.rows);
+            console.log("SIGNERS QUERY NAMES >>>>>>", names.rows);
             res.render("signers", {
                 layout: "main",
                 signers: names.rows,
@@ -323,13 +323,14 @@ app.get("/signers", function(req, res) {
 });
 
 app.get("/signers/:city", function(req, res) {
-    let city = req.params.city.toLowerCase();
+    let city = req.params.city;
+    // console.log("THE CITY PARAMS", req.params);
     cityQuery(city)
         .then(function(names) {
+            console.log("CITY NAMES", names);
             res.render("signers", {
                 layout: "main",
-                singers: names.rows,
-                signersSameCity: true
+                signers: names.rows
             });
         })
         .catch(function(err) {

@@ -6,17 +6,50 @@ body {
     align-items: center;
     flex-direction: column;
     text-align: center;
+    overflow: hidden;
 }
 
-/* Petition Signing Page */
+/* HOME/Petition Signing Page */
+/*Fly in Letters WHO MADE MY CLOTHES -ANIMATION */
+/* .fly-in-letters {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
+}
+
+.fly-in-letters span {
+    margin-right: 50px;
+    opacity: 1;
+    transition: all 2.5s ease;
+}
+
+.fly-in-letters.hidden span {
+    opacity: 0;
+}
+
+.fly-in-letters.hidden span:nth-child(1) {
+    transform: translateX(-200px) translateY(-200px);
+}
+.fly-in-letters.hidden span:nth-child(2) {
+    transform: translateX(20px) translateY(100px);
+}
+.fly-in-letters.hidden span:nth-child(3) {
+    transform: translateX(100px) translateY(-200px);
+}
+.fly-in-letters.hidden span:nth-child(4) {
+    transform: translateX(300px) translateY(200px);
+} */
+
+/*Fly in Letters WHO MADE MY CLOTHES END */
 
 .petition-home-wrap {
-    height: 100vh;
-    width: 100vw;
+    /* height: 100vh;
+    width: 100vw; */
 }
 
 .petition-home-wrap h1 {
-    font-size: 5rem;
+    font-size: 3rem;
     text-align: center;
     display: inline;
 }
@@ -25,9 +58,6 @@ input {
 }
 .home-headline {
     text-transform: uppercase;
-}
-
-.content-wrap {
 }
 
 .petition-intro {
@@ -45,6 +75,7 @@ canvas {
 }
 
 /* Thank You Page */
+
 .thank-you-wrap h1 {
     font-size: 6em;
 }
@@ -68,6 +99,12 @@ canvas {
 .thank-you-wrap img {
     display: inline-block;
 }
+
+/* SIGNERS PAGE  */
+.signers-wrap li {
+    list-style: none;
+}
+/* SIGNERS PAGE END  */
 
 /* Error Message */
 #error-insert {

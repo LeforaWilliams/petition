@@ -11,12 +11,12 @@ module.exports.insertSig = function insertSig(signiture, userId) {
 
 module.exports.queryDbForSigners = function() {
     return db.query(
-        `SELECT users.name, users.surname, user_profiles.url, user_profiles.age,user_profiles.city, signedPetition.user_id
+        `SELECT users.name, users.surname, user_profiles.url, user_profiles.age,user_profiles.city
         FROM users
         LEFT JOIN user_profiles
         ON users.id = user_profiles.user_id
-        LEFT JOIN signedPetition
-        ON user_profiles.user_id = signedPetition.user_id `
+        JOIN signedPetition
+        ON user_profiles.user_id = signedPetition.user_id`
     );
 };
 
@@ -63,7 +63,12 @@ module.exports.insertUserProfile = function insertUserProfile(
 
 module.exports.cityQuery = function cityQuery(city) {
     return db.query(
-        "SELECT users.name, users.surname, user_profiles.url, user_profiles.age,user_profiles.city FROM users LEFT JOIN user_profiles ON users.id = user_profiles.user_id WHERE city=$1",
+        `SELECT users.name, users.surname, user_profiles.url, user_profiles.age
+        FROM users
+        LEFT JOIN user_profiles
+        ON users.id = user_profiles.user_id
+        JOIN signedPetition
+        ON user_profiles.user_id = signedPetition.user_id WHERE city=$1`,
         [city]
     );
 };
@@ -123,9 +128,3 @@ module.exports.getUserProfileInfo = function(user_id) {
 module.exports.deleteSig = function(user_id) {
     return db.query(`DELETE FROM signedPetition WHERE user_id =$1 `, [user_id]);
 };
-
-//UNSIGN FROM THE PETITION
-//post request that runs a delete queryDb
-//need to also delete the sig ID from the session OBJECT
-
-//don'T need first and last name from sig table anymore becuase it now is stored in the users table
