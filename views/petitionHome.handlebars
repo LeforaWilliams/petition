@@ -1,52 +1,14 @@
-<!DOCTYPE html>
 
 <div class="petition-home-wrap">
-    <section class="petition-intro-paragraph">
-        <p>With the rise of fast fashion, clothing cheaply available with new styles out every week. Garnmanets no linger have to last a king time as the invesment was mininmal in the first place and the desire for simething fresh is stiring. Typically the ones who pay the price are the garnemnt workers who the work was outsiurced to and the environment. Women work incredibly long hours, for money that barely gets them through the month let alone the posibbilitybto send their kids to school. Furthermore, their health is greatly compromised by the eorjing environment which is full of toxic exhaust, chemicals and their waste. 
-
-        We can do a lot better than this.  By asking brands to olen up their supply chain and make it more transparent, thy allow the consumer to make an informed choice upon purchase. 
-
-        Sign this petition if you want to join us in in changing the fashion Industry.</p>
-
-        <h1>
-            <div id='letters' class="home-headline fly-in-letters hidden">
-                <span class="W">W</span>
-                <span class="H">h</span>
-                <span class="O">o</span>
-                <span class="M"> M</span>
-                <span class="A">a</span>
-                <span class="D">d</span>
-                <span class="E">e</span>
-                <span class="M"> M</span>
-                <span class="Y">Y</span>
-                <span class="C"> C</span>
-                <span class="L">L</span>
-                <span class="O">o</span>
-                <span class="T">t</span>
-                <span class="H">h</span>
-                <span class="E">e</span>
-                <span class="S">s</span>
-                <span class="?">?</span>
-            </div>
-
-        </h1>
-        <p><strong>Sign the petition for more transparency in the fashion supply chain and humane treatment of garnment workers.</strong></p>
-    </section>
-
-
-
-
-        {{>error}}
-
+    {{>error}}
+    <h2> Hi {{fN}}, sign here to support the concious fashion petition</h2>
     <form class="sign-petition-form" action="/home" method="post">
-        <input type="text" name="name" value="{{fN}}" placeholder="Name">
-        <input type="text" name="surname" value="{{lN}}" placeholder="Surname">
+
         <input type="text" name="sig" value="" id="sig-input-field">
         <input type="hidden" name="_csrf" value="{{csrfToken}}">
 
-
         <canvas id="canvas" width="300" height="100" ></canvas>
-        <button> SIGN PETITION</button>
+        <button>YES! to more transparency</button>
         <!-- type should not be in there becuase the form automaticlly submits -->
     </form>
     {{>logoutButton}}

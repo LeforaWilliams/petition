@@ -9,8 +9,6 @@ if (process.env.DATABASE_URL) {
 }
 
 const db = spicedPg(dbUrl);
-// const db =
-//     spicedPg(`postgres:postgres:${password}@localhost:5432/petition`);
 
 module.exports.insertSig = function insertSig(signiture, userId) {
     return db.query(
@@ -25,7 +23,7 @@ module.exports.queryDbForSigners = function() {
         FROM users
         LEFT JOIN user_profiles
         ON users.id = user_profiles.user_id
-        JOIN signedPetition
+        LEFT JOIN signedPetition
         ON user_profiles.user_id = signedPetition.user_id`
     );
 };

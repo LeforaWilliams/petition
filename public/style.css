@@ -1,4 +1,6 @@
 body {
+    box-sizing: border-box;
+    margin: 0;
     background: #ffdb8a;
     color: #170f36;
     display: flex;
@@ -6,12 +8,73 @@ body {
     align-items: center;
     flex-direction: column;
     text-align: center;
-    overflow: hidden;
 }
+
+/* LAYOUT MAIN */
+.content-wrap {
+    height: 100vh;
+    /* width: 100vw; */
+    /* padding: 0 15%; */
+    margin-top: 2%;
+}
+/* LAYOUT MAIN END */
+
+/* REGISTRATION PAGE */
+
+section.fashion-image-grid {
+    margin: 0 auto;
+    width: 1300px;
+    border: 3px solid green;
+    display: grid;
+    grid-template-rows: 400px;
+    grid-template-columns: 400px 400px 500px;
+    position: relative;
+}
+
+section.fashion-image-grid img {
+    height: 500px;
+    width: 500px;
+    object-fit: contain;
+}
+
+section.fashion-image-grid .img-3 {
+    z-index: 5;
+}
+
+/* images animation */
+.img-transition {
+    transition: all 2.5s ease;
+}
+
+section.fashion-image-grid .img-ex-1 {
+    transform: translate(-83%, 103%);
+}
+
+section.fashion-image-grid .img-ex-2 {
+    transform: translate(0%, -47%);
+}
+
+section.fashion-image-grid .img-ex-3 {
+    transform: translate(76%, 29%);
+}
+
+section.fashion-image-grid .img-ex-4 {
+    transform: translate(215%, -38%);
+}
+
+section.fashion-image-grid .img-ex-5 {
+    transform: translate(-144%, -60%);
+}
+
+section.fashion-image-grid .img-ex-6 {
+    transform: translate(-214%, -96%);
+}
+
+/* REGISTRATION PAGE END  */
 
 /* HOME/Petition Signing Page */
 /*Fly in Letters WHO MADE MY CLOTHES -ANIMATION */
-/* .fly-in-letters {
+.fly-in-letters {
     position: absolute;
     left: 50%;
     top: 50%;
@@ -19,7 +82,7 @@ body {
 }
 
 .fly-in-letters span {
-    margin-right: 50px;
+    margin-right: 20px;
     opacity: 1;
     transition: all 2.5s ease;
 }
@@ -29,7 +92,7 @@ body {
 }
 
 .fly-in-letters.hidden span:nth-child(1) {
-    transform: translateX(-200px) translateY(-200px);
+    transform: translateX(-3000px) translateY(-300px);
 }
 .fly-in-letters.hidden span:nth-child(2) {
     transform: translateX(20px) translateY(100px);
@@ -39,13 +102,12 @@ body {
 }
 .fly-in-letters.hidden span:nth-child(4) {
     transform: translateX(300px) translateY(200px);
-} */
+}
 
-/*Fly in Letters WHO MADE MY CLOTHES END */
+/*Fly in Letters WHO MADE MY
+ CLOTHES END */
 
 .petition-home-wrap {
-    /* height: 100vh;
-    width: 100vw; */
 }
 
 .petition-home-wrap h1 {
@@ -109,4 +171,15 @@ canvas {
 /* Error Message */
 #error-insert {
     color: firebrick;
+}
+
+form {
+    width: 400px;
+    margin: 0 auto;
+}
+
+form input {
+    display: block;
+    width: 160px;
+    border: 3px solid black;
 }
