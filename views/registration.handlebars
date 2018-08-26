@@ -1,4 +1,4 @@
-<section class='fashion-image-grid'>
+<section class='fashion-image-grid centred-fixed-elements' >
     <img class="img-1  img-transition" src="images/img-1.jpg" alt="">
     <img class="img-2  img-transition" src="images/img-2.jpg" alt="">
     <img class="img-3  img-transition" src="images/img-3.jpg" alt="">
@@ -6,15 +6,19 @@
     <img class="img-5  img-transition" src="images/img-5.jpg" alt="">
     <img class="img-6  img-transition" src="images/img-6.jpg" alt="">
 </section>
+
 <section class="petition-intro-paragraph">
-    <p>With the rise of fast fashion, clothing cheaply available with new styles out every week. Garnmanets no linger have to last a king time as the invesment was mininmal in the first place and the desire for simething fresh is stiring. Typically the ones who pay the price are the garnemnt workers who the work was outsiurced to and the environment. Women work incredibly long hours, for money that barely gets them through the month let alone the posibbilitybto send their kids to school. Furthermore, their health is greatly compromised by the eorjing environment which is full of toxic exhaust, chemicals and their waste. 
+    <div class="intro-paragraph centred-fixed-elements">
+        <p>With the rise of fast fashion, clothing cheaply available with new styles out every week. Garnmanets no linger have to last a king time as the invesment was mininmal in the first place and the desire for simething fresh is stiring. Typically the ones who pay the price are the garnemnt workers who the work was outsiurced to and the environment. Women work incredibly long hours, for money that barely gets them through the month let alone the posibbilitybto send their kids to school. Furthermore, their health is greatly compromised by the eorjing environment which is full of toxic exhaust, chemicals and their waste. 
 
-    We can do a lot better than this.  By asking brands to olen up their supply chain and make it more transparent, thy allow the consumer to make an informed choice upon purchase. 
+        We can do a lot better than this.  By asking brands to olen up their supply chain and make it more transparent, thy allow the consumer to make an informed choice upon purchase. 
 
-    Sign this petition if you want to join us in in changing the fashion Industry.</p>
+        Sign this petition if you want to join us in in changing the fashion Industry.</p>
+
+    </div>
 
     <h1>
-        <div id='letters' class="home-headline fly-in-letters hidden">
+        <div id='letters' class="home-headline fly-in-letters hidden centred-fixed-elements">
             <div class="who">
                 <span class="W">W</span>
                 <span class="H">h</span>
@@ -23,51 +27,57 @@
 
 
             <div class="made">
-                <span class="M"> M</span>
+                <span class="M">M</span>
                 <span class="A">a</span>
                 <span class="D">d</span>
                 <span class="E">e</span>
             </div>
 
             <div class="my">
-                <span class="M"> M</span>
+                <span class="MM">M</span>
                 <span class="Y">Y</span>
             </div>
 
             <div class="clothes">
-                <span class="C"> C</span>
+                <span class="C">C</span>
                 <span class="L">L</span>
-                <span class="O">o</span>
+                <span class="CO">o</span>
                 <span class="T">t</span>
                 <span class="H">h</span>
-                <span class="E">e</span>
+                <span class="CE">e</span>
                 <span class="S">s</span>
                 <span class="?">?</span>
             </div>
 
 
         </div>
-
     </h1>
-    <p><strong>Sign the petition for more transparency in the fashion supply chain and humane treatment of garnment workers.</strong></p>
-</section>
-<h1>Here you can register to sign the petition.</h1>
-<p>If you already have an account, you can <a href="/login">log in here</a> </p>
-<form class="registration-form" action="/registration" method="post">
-    <input type="text" name="name" value="" placeholder="
+    </section>
+
+<div class="registration-page-wrap">
+    <div class="registration-page-grid">
+        <h1>Register here to sign the petitioin for more transparency in the fashion supply chain.</h1>
+
+        <form class="registration-form" action="/registration" method="post">
+            <input type="text" name="name" value="" placeholder="
     First Name">
 
-    <input type="text" name="surname" value="" placeholder="
+        <input type="text" name="surname" value="" placeholder="
     last Name">
 
-    <input type="text" name="email" value="" placeholder="
+        <input type="text" name="email" value="" placeholder="
     Your email-address">
 
-    <input type="password" name="password" value="" placeholder="
+        <input type="password" name="password" value="" placeholder="
     your password">
-    <input type="hidden" name="_csrf" value="{{csrfToken}}">
+        <input type="hidden" name="_csrf" value="{{csrfToken}}">
+        {{>error}}
 
-    <button name="button">Register</button>
-</form>
+        <button name="button">Register</button>
+    </form>
 
-    {{>error}}
+    <p>If you already have an account, you can <a href="/login">log in here</a> </p>
+
+    </div>
+
+</div>

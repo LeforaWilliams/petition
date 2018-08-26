@@ -8,8 +8,36 @@ body {
     align-items: center;
     flex-direction: column;
     text-align: center;
+    font-family: Lato, sans-serif;
+    padding-top: 2%;
+}
+h1 {
+    font-family: Open Sans, sans-serif;
 }
 
+a {
+    text-decoration: none;
+    color: #170f36;
+}
+
+a:hover {
+    text-decoration: underline;
+    color: yellow;
+}
+
+button {
+    background: black;
+    color: white;
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+    padding: 3% 9%;
+    border: white solid 2px;
+    cursor: pointer;
+}
+a button:hover {
+    background: #800080;
+    border: #170f36 solid 2px;
+}
 /* LAYOUT MAIN */
 .content-wrap {
     height: 100vh;
@@ -26,9 +54,17 @@ section.fashion-image-grid {
     width: 1300px;
     border: 3px solid green;
     display: grid;
-    grid-template-rows: 400px;
+    grid-template-rows: 400px 400px;
     grid-template-columns: 400px 400px 500px;
-    position: relative;
+    /* position: relative; */
+}
+
+.centred-fixed-elements {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    /* bring your own prefixes */
+    transform: translate(-50%, -50%);
 }
 
 section.fashion-image-grid img {
@@ -39,6 +75,10 @@ section.fashion-image-grid img {
 
 section.fashion-image-grid .img-3 {
     z-index: 5;
+}
+
+section.fashion-image-grid .img-5 {
+    margin-top: -70px;
 }
 
 /* images animation */
@@ -70,24 +110,73 @@ section.fashion-image-grid .img-ex-6 {
     transform: translate(-214%, -96%);
 }
 
-/* REGISTRATION PAGE END  */
+.intro-paragraph {
+    /* only contains a p tag so far */
+    font-family: Lato, sans-serif;
+    font-weight: 700;
+    width: 29%;
+    margin: 0 auto;
+    opacity: 1;
+    line-height: 1.3em;
+}
+#letters {
+    font-family: Roboto Mono;
+    font-weight: 700;
+    font-size: 11rem;
+    color: white;
+}
 
-/* HOME/Petition Signing Page */
+.M,
+.A,
+.D,
+.E {
+    margin-right: -95px;
+}
+
+.W,
+.H,
+.O {
+    margin-right: -95px;
+}
+
+.MM,
+.Y {
+    margin-right: -95px;
+}
+
+.C,
+.L,
+.CO,
+.T,
+.H,
+.CE,
+.S {
+    margin-right: -95px;
+}
+
+div.my,
+div.made {
+    display: inline-block;
+}
+
+div.my {
+    margin-left: 44px;
+}
+
 /*Fly in Letters WHO MADE MY CLOTHES -ANIMATION */
 .fly-in-letters {
-    position: absolute;
+    /* position: absolute;
     left: 50%;
     top: 50%;
-    transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%); */
 }
 
 .fly-in-letters span {
-    margin-right: 20px;
     opacity: 1;
     transition: all 2.5s ease;
 }
 
-.fly-in-letters.hidden span {
+/* .fly-in-letters.hidden span {
     opacity: 0;
 }
 
@@ -102,7 +191,80 @@ section.fashion-image-grid .img-ex-6 {
 }
 .fly-in-letters.hidden span:nth-child(4) {
     transform: translateX(300px) translateY(200px);
+} */
+
+.registration-page-wrap {
+    /* height: 100vh; */
+    width: 100vw;
+    margin-top: 5000px;
+    background: purple;
+    position: relative;
 }
+
+.registration-page-grid,
+.profile-page-grid {
+    display: grid;
+    grid-template-rows: 400px 158px;
+    grid-template-columns: 500px 500px;
+    margin-left: 10%;
+    /* margin-bottom: -54%; */
+    /* right: -20%; */
+    padding-top: 11%;
+}
+
+.registration-page-wrap h1 {
+    font-family: Open Sans, sans-serif;
+    /* width: 33%; */
+    display: inline-block;
+    margin-top: 7%;
+    font-size: 34px;
+}
+
+.registration-page-wrap p,
+.profile-page-grid p {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+/* REGISTRATION PAGE END  */
+
+/* PROFILE/ PROFILE EDIT PAGE */
+.profile-page-wrap h1 {
+    width: 35%;
+    text-align: left;
+}
+
+.profile-page-grid {
+    margin-left: 0;
+    padding-top: 1%;
+}
+
+.profile-page-grid p {
+    width: 61%;
+}
+
+.profile-page-grid form {
+    margin-top: -21%;
+}
+
+#logout {
+    position: relative;
+    left: 146%;
+    top: 34%;
+}
+
+.profile-edit-wrap h1 {
+    position: fixed;
+    left: 4%;
+    top: 40%;
+}
+
+.profile-edit-wrap button {
+    display: inline-block;
+}
+/*PROFILE/PROFILE EDIT PAGE END */
+
+/* HOME/Petition Signing Page */
 
 /*Fly in Letters WHO MADE MY
  CLOTHES END */
@@ -115,9 +277,7 @@ section.fashion-image-grid .img-ex-6 {
     text-align: center;
     display: inline;
 }
-input {
-    display: block;
-}
+
 .home-headline {
     text-transform: uppercase;
 }
@@ -148,7 +308,6 @@ canvas {
 }
 
 .thank-you-wrap a {
-    text-decoration: none;
     font-size: 1.8rem;
     color: salmon;
 }
@@ -176,10 +335,22 @@ canvas {
 form {
     width: 400px;
     margin: 0 auto;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    font-family: Lato, sans-serif;
+    font-weight: 700;
+    margin-top: 7%;
 }
 
 form input {
     display: block;
-    width: 160px;
-    border: 3px solid black;
+    width: 519px;
+    height: 44px;
+    background: black;
+    border: 1px solid black;
+    color: white;
+    font-family: Roboto Mono, monospace;
+    font-size: 1.8rem;
+    text-align: left;
+    margin-bottom: 30px;
 }

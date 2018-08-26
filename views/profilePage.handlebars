@@ -1,22 +1,23 @@
 <!doctype html>
 <div class="profile-page-wrap">
+    <h1>For more transparency in the fashion supply chain</h1>
+    <div class="profile-page-grid">
 
-    <form class="" action="index.html " method="post">
-
-    </form>
-    <form class="profile-page" action="/profile" method="post">
-        <input type="text" name="age" value="">
-        <p>Age</p>
-        <input type="text" name="city" value="">
-        <p>City</p>
-        <input type="text" name="url" value="">
-        <p>Homepage</p>
-        <input type="hidden" name="_csrf" value="{{csrfToken}}">
-        <button name="continueButton">Continue</button>
-        <a href="/profile/edit">Edit Profile</a>
+        <p>If you like, you can add more details about you. This way, others that live in the same city as you can get in touch with you.</p>
+        <form class="profile-page-form" action="/profile" method="post">
+            <input type="text" name="age" value="" placeholder="Age">
+            <!-- <p>Age</p> -->
+            <input type="text" name="city" value="" placeholder="City">
+            <!-- <p>City</p> -->
+            <input type="text" name="url" value="" placeholder="Website">
+            <!-- <p>Homepage</p> -->
+            <input type="hidden" name="_csrf" value="{{csrfToken}}">
+            <button name="continueButton">Continue</button>
+            <!-- <a href="/profile/edit">Edit Profile</a> -->
 
 
 
-    </form>
+        </form>
     {{>logoutButton}}
+    </div>
 </div>
