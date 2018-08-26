@@ -1,14 +1,14 @@
 
 <div class="petition-home-wrap">
     {{>error}}
-    <h2> Hi {{fN}}, sign here to support the concious fashion petition</h2>
+    <h2> Hi {{fN}}, sign here to support the concious fashion petition!</h2>
     <form class="sign-petition-form" action="/home" method="post">
 
         <input type="text" name="sig" value="" id="sig-input-field">
         <input type="hidden" name="_csrf" value="{{csrfToken}}">
 
-        <canvas id="canvas" width="300" height="100" ></canvas>
-        <button>YES! to more transparency</button>
+        <canvas id="canvas" width="650" height="250" ></canvas>
+        <button>YES! To more transparency</button>
         <!-- type should not be in there becuase the form automaticlly submits -->
     </form>
     {{>logoutButton}}

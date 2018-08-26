@@ -266,10 +266,11 @@ div.my {
 
 /* HOME/Petition Signing Page */
 
-/*Fly in Letters WHO MADE MY
- CLOTHES END */
-
-.petition-home-wrap {
+.petition-home-wrap h2 {
+    position: fixed;
+    width: 24%;
+    top: 24%;
+    z-index: -1;
 }
 
 .petition-home-wrap h1 {
@@ -278,18 +279,17 @@ div.my {
     display: inline;
 }
 
+.sign-petition-form button {
+    margin-top: 14%;
+}
+
 .home-headline {
     text-transform: uppercase;
 }
 
-.petition-intro {
-    /* display: flex;
-    justify-content: center;
-    align-items: center; */
-}
-
 canvas {
     border: 1px dashed black;
+    margin-left: -35%;
 }
 
 #sig-input-field {
@@ -299,7 +299,8 @@ canvas {
 /* Thank You Page */
 
 .thank-you-wrap h1 {
-    font-size: 6em;
+    font-size: 3em;
+    margin-bottom: -4%;
 }
 
 .thank-you-wrap p {
