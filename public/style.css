@@ -1,7 +1,8 @@
 body {
     box-sizing: border-box;
     margin: 0;
-    background: #ffdb8a;
+    /* background: #ffdb8a; */
+    background: whitesmoke;
     color: #170f36;
     display: flex;
     justify-content: center;
@@ -51,11 +52,13 @@ a button:hover {
 
 section.fashion-image-grid {
     margin: 0 auto;
-    width: 1300px;
-    border: 3px solid green;
+    /* width: 1300px; */
+    width: 973px;
     display: grid;
-    grid-template-rows: 400px 400px;
-    grid-template-columns: 400px 400px 500px;
+    /* grid-template-rows: 400px 400px;
+    grid-template-columns: 400px 400px 500px; */
+    grid-template-rows: 300px 300px;
+    grid-template-columns: 300px 300px 400px;
     /* position: relative; */
 }
 
@@ -68,8 +71,11 @@ section.fashion-image-grid {
 }
 
 section.fashion-image-grid img {
-    height: 500px;
+    /* height: 500px;
     width: 500px;
+ */
+    height: 315px;
+    width: 436px;
     object-fit: contain;
 }
 
@@ -87,7 +93,7 @@ section.fashion-image-grid .img-5 {
 }
 
 section.fashion-image-grid .img-ex-1 {
-    transform: translate(-83%, 103%);
+    transform: translate(-73%, 120%);
 }
 
 section.fashion-image-grid .img-ex-2 {
@@ -95,11 +101,11 @@ section.fashion-image-grid .img-ex-2 {
 }
 
 section.fashion-image-grid .img-ex-3 {
-    transform: translate(76%, 29%);
+    transform: translate(66%, 39%);
 }
 
 section.fashion-image-grid .img-ex-4 {
-    transform: translate(215%, -38%);
+    transform: translate(194%, -45%);
 }
 
 section.fashion-image-grid .img-ex-5 {
@@ -118,12 +124,14 @@ section.fashion-image-grid .img-ex-6 {
     margin: 0 auto;
     opacity: 1;
     line-height: 1.3em;
+    z-index: -1;
 }
 #letters {
     font-family: Roboto Mono;
     font-weight: 700;
     font-size: 11rem;
-    color: white;
+    color: #ff702b;
+    padding-top: 11%;
 }
 
 .M,
@@ -154,6 +162,9 @@ section.fashion-image-grid .img-ex-6 {
     margin-right: -95px;
 }
 
+div.who {
+    margin-bottom: -11%;
+}
 div.my,
 div.made {
     display: inline-block;
@@ -161,6 +172,11 @@ div.made {
 
 div.my {
     margin-left: 44px;
+}
+
+div.clothes {
+    margin-top: -9%;
+    font-size: 10rem;
 }
 
 /*Fly in Letters WHO MADE MY CLOTHES -ANIMATION */
@@ -176,9 +192,10 @@ div.my {
     transition: all 2.5s ease;
 }
 
-/* .fly-in-letters.hidden span {
+.fly-in-letters.hidden span {
     opacity: 0;
 }
+/*
 
 .fly-in-letters.hidden span:nth-child(1) {
     transform: translateX(-3000px) translateY(-300px);
@@ -196,8 +213,8 @@ div.my {
 .registration-page-wrap {
     /* height: 100vh; */
     width: 100vw;
-    margin-top: 5000px;
-    background: purple;
+    margin-top: 2000px;
+    background: #b6cdc1;
     position: relative;
 }
 
@@ -218,12 +235,20 @@ div.my {
     display: inline-block;
     margin-top: 7%;
     font-size: 34px;
+    color: #db7d49;
 }
 
 .registration-page-wrap p,
 .profile-page-grid p {
     font-size: 1.2rem;
     font-weight: bold;
+}
+
+.registration-page-wrap input {
+    background: #b6cdc1;
+    color: #db7d49;
+    border: 2px solid #db7d49;
+    font-weight: 700;
 }
 
 /* REGISTRATION PAGE END  */
@@ -301,6 +326,7 @@ canvas {
 .thank-you-wrap h1 {
     font-size: 3em;
     margin-bottom: -4%;
+    margin-top: -1%;
 }
 
 .thank-you-wrap p {
@@ -309,17 +335,35 @@ canvas {
 }
 
 .thank-you-wrap a {
-    font-size: 1.8rem;
+    font-size: 1.2rem;
     color: salmon;
+    width: 54%;
+    display: block;
+    margin-left: 22%;
+    margin-top: 2%;
+}
+
+.thanks-page-links {
+    margin-top: 16%;
+    margin-left: 3%;
 }
 
 .thank-you-wrap a:hover {
-    font-size: 1.9rem;
+    font-size: 1.3rem;
     color: #170f36;
 }
 
 .thank-you-wrap img {
     display: inline-block;
+    position: absolute;
+    /* margin: 0 auto; */
+    top: 31%;
+    left: 31%;
+    height: 30%;
+}
+
+.thank-you-wrap form {
+    margin-top: 3%;
 }
 
 /* SIGNERS PAGE  */
