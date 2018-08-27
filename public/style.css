@@ -49,7 +49,9 @@ button {
 /* LAYOUT MAIN END */
 
 /* REGISTRATION PAGE */
-
+.registration-body {
+    background: whitesmoke;
+}
 section.fashion-image-grid {
     margin: 0 auto;
     /* width: 1300px; */
@@ -127,6 +129,7 @@ section.fashion-image-grid .img-ex-6 {
     z-index: -1;
     font-size: 18px;
     padding-top: 7%;
+    color: #ff702b;
 }
 #letters {
     font-family: Roboto Mono;
@@ -412,6 +415,7 @@ canvas {
 .signers-wrap li {
     list-style: none;
     font-size: 1.6rem;
+    margin-bottom: 16px;
 }
 /* SIGNERS PAGE END  */
 

@@ -69,7 +69,8 @@ app.get("/", function(req, res) {
 /**********Registration***********/
 app.get("/registration", function(req, res) {
     res.render("registration", {
-        layout: "main"
+        layout: "main",
+        className: "registration-body"
     });
 });
 app.post("/registration", function(req, res) {
