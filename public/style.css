@@ -2,8 +2,10 @@ body {
     box-sizing: border-box;
     margin: 0;
     /* background: #ffdb8a; */
-    background: whitesmoke;
-    color: #170f36;
+    /* background: #d2997b; */
+    background: #b6cdc1;
+    color: #db7d49;
+    /* color: #b1a572; */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -12,6 +14,7 @@ body {
     font-family: Lato, sans-serif;
     padding-top: 2%;
 }
+
 h1 {
     font-family: Open Sans, sans-serif;
 }
@@ -23,11 +26,11 @@ a {
 
 a:hover {
     text-decoration: underline;
-    color: yellow;
+    color: #ff702b;
 }
 
 button {
-    background: black;
+    background: none;
     color: white;
     font-size: 1.2rem;
     letter-spacing: 2px;
@@ -35,16 +38,13 @@ button {
     border: white solid 2px;
     cursor: pointer;
 }
-a button:hover {
-    background: #800080;
-    border: #170f36 solid 2px;
-}
+
 /* LAYOUT MAIN */
 .content-wrap {
-    height: 100vh;
+    /* height: 100vh; */
     /* width: 100vw; */
     /* padding: 0 15%; */
-    margin-top: 2%;
+    /* margin-top: 2%; */
 }
 /* LAYOUT MAIN END */
 
@@ -123,8 +123,10 @@ section.fashion-image-grid .img-ex-6 {
     width: 29%;
     margin: 0 auto;
     opacity: 1;
-    line-height: 1.3em;
+    line-height: 1.4;
     z-index: -1;
+    font-size: 18px;
+    padding-top: 7%;
 }
 #letters {
     font-family: Roboto Mono;
@@ -180,12 +182,6 @@ div.clothes {
 }
 
 /*Fly in Letters WHO MADE MY CLOTHES -ANIMATION */
-.fly-in-letters {
-    /* position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translateX(-50%) translateY(-50%); */
-}
 
 .fly-in-letters span {
     opacity: 1;
@@ -195,23 +191,8 @@ div.clothes {
 .fly-in-letters.hidden span {
     opacity: 0;
 }
-/*
-
-.fly-in-letters.hidden span:nth-child(1) {
-    transform: translateX(-3000px) translateY(-300px);
-}
-.fly-in-letters.hidden span:nth-child(2) {
-    transform: translateX(20px) translateY(100px);
-}
-.fly-in-letters.hidden span:nth-child(3) {
-    transform: translateX(100px) translateY(-200px);
-}
-.fly-in-letters.hidden span:nth-child(4) {
-    transform: translateX(300px) translateY(200px);
-} */
 
 .registration-page-wrap {
-    /* height: 100vh; */
     width: 100vw;
     margin-top: 2000px;
     background: #b6cdc1;
@@ -219,19 +200,18 @@ div.clothes {
 }
 
 .registration-page-grid,
-.profile-page-grid {
+.profile-page-grid,
+.login-page-grid {
     display: grid;
     grid-template-rows: 400px 158px;
     grid-template-columns: 500px 500px;
     margin-left: 10%;
-    /* margin-bottom: -54%; */
-    /* right: -20%; */
     padding-top: 11%;
 }
 
-.registration-page-wrap h1 {
+.registration-page-wrap h1,
+.login-page-wrap h1 {
     font-family: Open Sans, sans-serif;
-    /* width: 33%; */
     display: inline-block;
     margin-top: 7%;
     font-size: 34px;
@@ -244,19 +224,41 @@ div.clothes {
     font-weight: bold;
 }
 
-.registration-page-wrap input {
+input {
     background: #b6cdc1;
     color: #db7d49;
     border: 2px solid #db7d49;
     font-weight: 700;
 }
 
-/* REGISTRATION PAGE END  */
+button {
+    color: #db7d49;
+    border: 2px solid #db7d49;
+}
 
+button:hover {
+    color: #b6cdc1;
+    border: 2px solid #b6cdc1;
+    background: #db7d49;
+}
+
+/* REGISTRATION PAGE END  */
+.login-page-wrap {
+    width: 100vw;
+    margin-top: -9%;
+    position: relative;
+}
 /* PROFILE/ PROFILE EDIT PAGE */
+.profile-page-wrap {
+    width: 100vw;
+    position: relative;
+    margin-top: -6%;
+    padding: 10% 9%;
+}
 .profile-page-wrap h1 {
     width: 35%;
     text-align: left;
+    z-index: 5;
 }
 
 .profile-page-grid {
@@ -272,30 +274,43 @@ div.clothes {
     margin-top: -21%;
 }
 
-#logout {
+.profile-page-wrap #logout {
     position: relative;
-    left: 146%;
-    top: 34%;
+    left: 148%;
+    top: -172%;
 }
 
+.profile-edit-wrap {
+    width: 100vw;
+    position: relative;
+    margin-top: -16%;
+    padding: 8% 9%;
+}
 .profile-edit-wrap h1 {
     position: fixed;
     left: 4%;
     top: 40%;
+    color: whitesmoke;
 }
 
 .profile-edit-wrap button {
     display: inline-block;
 }
-/*PROFILE/PROFILE EDIT PAGE END */
 
-/* HOME/Petition Signing Page */
-
+.petition-home-wrap {
+    position: absolute;
+    margin-top: -2%;
+    margin-left: -50%;
+    z-index: -2;
+    width: 100vw;
+    height: 100%;
+}
 .petition-home-wrap h2 {
     position: fixed;
     width: 24%;
     top: 24%;
     z-index: -1;
+    left: 37%;
 }
 
 .petition-home-wrap h1 {
@@ -306,6 +321,7 @@ div.clothes {
 
 .sign-petition-form button {
     margin-top: 14%;
+    margin-bottom: -6%;
 }
 
 .home-headline {
@@ -315,13 +331,23 @@ div.clothes {
 canvas {
     border: 1px dashed black;
     margin-left: -35%;
+    z-index: 5;
 }
 
 #sig-input-field {
     visibility: hidden;
 }
 
+.content-wrap.petition-wrap {
+}
+
 /* Thank You Page */
+.thank-you-wrap {
+    width: 100vw;
+    margin-top: -4%;
+    position: relative;
+    padding: 3% 1%;
+}
 
 .thank-you-wrap h1 {
     font-size: 3em;
@@ -336,7 +362,7 @@ canvas {
 
 .thank-you-wrap a {
     font-size: 1.2rem;
-    color: salmon;
+    color: #170f36;
     width: 54%;
     display: block;
     margin-left: 22%;
@@ -350,14 +376,12 @@ canvas {
 
 .thank-you-wrap a:hover {
     font-size: 1.3rem;
-    color: #170f36;
 }
 
 .thank-you-wrap img {
     display: inline-block;
     position: absolute;
-    /* margin: 0 auto; */
-    top: 31%;
+    top: 24%;
     left: 31%;
     height: 30%;
 }
@@ -367,8 +391,22 @@ canvas {
 }
 
 /* SIGNERS PAGE  */
+.signers-wrap {
+    width: 100vw;
+    margin-top: -6%;
+    position: relative;
+    padding-top: 4%;
+    height: 120%;
+}
+
+.signers-wrap h1 {
+    width: 51%;
+    margin-left: 26%;
+}
+
 .signers-wrap li {
     list-style: none;
+    font-size: 1.6rem;
 }
 /* SIGNERS PAGE END  */
 
@@ -391,9 +429,6 @@ form input {
     display: block;
     width: 519px;
     height: 44px;
-    background: black;
-    border: 1px solid black;
-    color: white;
     font-family: Roboto Mono, monospace;
     font-size: 1.8rem;
     text-align: left;
