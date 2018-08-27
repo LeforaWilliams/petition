@@ -226,7 +226,7 @@ app.post("/profile/edit", loginIdCheck, function(req, res) {
         req.body.url,
         req.session.userID
     )
-        .then(res.redirect("/profile"))
+        .then(res.redirect("/home"))
         .catch(function(err) {
             console.log(
                 "THIS ERROR COMES FROM THE PROFILE EDIT POST ROUTE",
