@@ -23,7 +23,7 @@ module.exports.queryDbForSigners = function() {
         FROM users
         LEFT JOIN user_profiles
         ON users.id = user_profiles.user_id
-        LEFT JOIN signedPetition
+        JOIN signedPetition
         ON user_profiles.user_id = signedPetition.user_id`
     );
 };

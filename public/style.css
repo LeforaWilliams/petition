@@ -183,6 +183,11 @@ div.clothes {
 
 /*Fly in Letters WHO MADE MY CLOTHES -ANIMATION */
 
+.fashion-background {
+    background: whitesmoke;
+    height: 100%;
+}
+
 .fly-in-letters span {
     opacity: 1;
     transition: all 2.5s ease;
